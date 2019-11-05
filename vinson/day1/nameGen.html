@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Name Generator</title>
+    <style>
+        button {
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="getName()">Name Generator</button>
+    <h2></h2>
+
+    <script>
+        const h2 = document.querySelector('h2');
+        const names = ['Eric', 'Alex', 'Dominique', 'Faith', 'Micheal', 'frank', 'vinson', 'david'];
+        function getName() {
+            console.log('name');
+            const random = Math.random() * names.length;
+            const floored = Math.floor(random);
+            console.log(floored);
+            h2.innerHTML = names[floored];
+        }
+    </script>
+</body>
+</html>
