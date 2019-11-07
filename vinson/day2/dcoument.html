@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        h1 {
+            color: green
+        }
+        li {
+            transition: all 1s ease;
+        }
+        .selected {
+            background-color: lime;
+            font-size: xx-large;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Document</h1>
+
+    <ul>
+        <li>0ne</li>
+        <li>Two</li>
+        <li>Three</li>
+    </ul>
+
+    <script>
+        var gravy = document.body;
+        gravy.style.backgroundColor = 'yellow';
+        var lis = document.querySelectorAll('li');
+        console.log(lis);
+        lis.forEach( function( li ) {
+            li.addEventListener('click', function () {
+
+                lis.forEach( item => {
+                    if (item !== this) {
+                        item.classList.remove('selected');
+                    }
+
+                });
+
+                if (this.classList.contains('selected')) {
+                    this.classList.remove('selected');
+                } else {
+                    this.classList.add('selected');
+                }
+            })
+        });
+
+        class Animal {
+            type = 'unknown'
+        }
+        console.log(new Animal())
+    </script>
+
+</body>
+</html>
