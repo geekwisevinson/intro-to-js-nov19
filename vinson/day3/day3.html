@@ -26,26 +26,24 @@
 
 
 
-    function addCharacter() {
-        theSimpsons.characters.homer = {};
-        theSimpsons.characters.homer.sayName = function sayMyName() {
+    function addCharacter(name, age) {
+        theSimpsons.characters[name] = {};
+        theSimpsons.characters[name].sayName = function sayMyName() {
             console.log(this.name);
         };
-        theSimpsons.characters.homer.name = 'homer';
-        theSimpsons.characters.homer.sayName();
-        theSimpsons['characters']['homer']['age'] = 45;
+        theSimpsons.characters[name].sayAge = function() {
+            console.log(this.age);
+        };
+        theSimpsons.characters[name].name = name;
+        theSimpsons.characters[name].sayName();
+        theSimpsons['characters'][name]['age'] = age;
     }
 
-
-    theSimpsons.characters.marge = {};
-    theSimpsons.characters.marge.name = 'marge';
-
-
-    theSimpsons.characters.bart = {};
-
-    theSimpsons.characters.lisa = {};
-
-    theSimpsons.characters.maggie = {};
+    addCharacter('homer', 47);
+    addCharacter('marge', 46);
+    addCharacter('bart', 12);
+    addCharacter('lisa', 10);
+    addCharacter('maggie', 1);
 
     console.log(theSimpsons);
 
