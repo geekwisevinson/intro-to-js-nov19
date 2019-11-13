@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h2>Data Types</h2>
+<ul>
+    <li>Number</li>
+    <li>String</li>
+    <li>Boolean</li>
+</ul>
+
+<ul>
+    <li>Object</li>
+    <li>Array</li>
+</ul>
+
+<script>
+
+    const theSimpsons = {};
+    theSimpsons.name = 'The Simpsons';
+    theSimpsons['characters'] = {};
+
+
+
+    function addCharacter() {
+        theSimpsons.characters.homer = {};
+        theSimpsons.characters.homer.sayName = function sayMyName() {
+            console.log(this.name);
+        };
+        theSimpsons.characters.homer.name = 'homer';
+        theSimpsons.characters.homer.sayName();
+        theSimpsons['characters']['homer']['age'] = 45;
+    }
+
+
+    theSimpsons.characters.marge = {};
+    theSimpsons.characters.marge.name = 'marge';
+
+
+    theSimpsons.characters.bart = {};
+
+    theSimpsons.characters.lisa = {};
+
+    theSimpsons.characters.maggie = {};
+
+    console.log(theSimpsons);
+
+
+
+
+
+
+</script>
+
+</body>
+</html>
