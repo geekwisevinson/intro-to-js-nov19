@@ -1,4 +1,5 @@
 # intro-to-js-nov19
+github pages : https://geekwisevinson.github.io/intro-to-js-nov19/
 ___
 This is a repository for Geekwise students taking intro to javascript at Bitwise.
 
