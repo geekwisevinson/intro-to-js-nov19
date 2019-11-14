@@ -1,0 +1,19 @@
+body {
+    background-color: grey;
+    font-size: xx-large;
+}
+.topic {
+    background-color: black;
+    margin: .25em;
+    padding: 1em;
+}
+.subject {
+    margin: 1em;
+    padding: 1em;
+    background-color: yellow;
+}
+h2,pre {
+    background-color: wheat;
+    padding: .25em;
+    margin: .25em;
+}

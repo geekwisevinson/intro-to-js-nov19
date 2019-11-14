@@ -2,80 +2,61 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Utility Belt</title>
-    <style>
-        body {
-            background-color: grey;
-            font-size: xx-large;
-        }
-        .topic {
-            background-color: black;
-            margin: .3em;
-            padding: 1em;
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .subject {
-            margin: .1em 1em;
-            padding: .5em;
-            background-color: yellow;
-        }
-        h2, pre {
-            background-color: wheat;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
     <div class="topic">
 
     </div>
 
     <h2 class="myTitle">Title</h2>
-    <pre>some text</pre>
+    <pre>Display Text Goes Here</pre>
 
-    <script src="js/dats-subjects.js"></script>
-
-    <script >
-
+    <script src="./js/data-subjects.js"></script>
+    <script>
+        
         const titleElement = document.querySelector('.myTitle');
         const displayElement = document.querySelector('pre');
-
-
+        
         const topicElement = document.querySelector('.topic');
-
+        
         function addSubject(subject) {
             const newElement = document.createElement('span');
             topicElement.appendChild(newElement);
             newElement.innerText = subject;
             newElement.classList.add('subject');
+
             newElement.addEventListener('click', function () {
                 console.log(this.innerText);
                 displaySubject(this.innerText);
             });
         }
 
-        addSubject('create variable' );
-        addSubject('get an element');
-        addSubject('change element text');
-        addSubject('add class to element');
-        addSubject('loops');
+        addSubject('Create a Variable');
+        addSubject('Get an Element');
+        addSubject('Change Element Text');
+        addSubject('Add/Remove Class to Element');
+        addSubject('Loops');
+
+        
 
         function displaySubject(subject) {
-            console.log('now');
             changeDisplay(
-                subjects[subject].titleText,
-                subjects[subject].displayText
+            subjects[subject].titleText,
+            subjects[subject].displayText
             )
         }
 
-        function changeDisplay(titleText, displayText) {
+        function changeDisplay (titleText, displayText) {
             titleElement.innerHTML = titleText;
             displayElement.innerHTML = displayText;
         }
 
-       console.log('end of internal script')
     </script>
-
 
 </body>
 </html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Data Types</h2>
+    <ul>
+        <li>Number</li>
+        <li>String</li>
+        <li>Boolean</li>
+    </ul>
+    <ul>
+        <li>Object</li>
+        <li>Array</li>
+    </ul>
+    
+<script>
+
+    const theSimpsons = {};
+    const char = 'character'
+    theSimpsons.name = "The Simpsons";
+    theSimpsons[char] = {};
+
+    function addCharacter(name, age) {
+        theSimpsons[char][name] = {};
+        theSimpsons[char][name].sayName = function sayMyName() {
+            console.log(this.name);
+        };
+        theSimpsons[char][name].sayAge = function() {
+            console.log(this.age);
+        };
+        theSimpsons[char][name].name = name;
+        theSimpsons[char][name].sayName();
+        theSimpsons[char][name]['age'] = age;
+        theSimpsons[char][name].sayAge();
+        
+    }
+
+    addCharacter('homer', 39);
+    addCharacter('marge', 36);
+    addCharacter('bart', 10);
+    addCharacter('lisa', 8);
+    addCharacter('maggie', 1);
+
+    console.log(theSimpsons);
+
+
+
+    // theSimpsons.character.marge = {};
+    // theSimpsons.character.marge.name = 'Marge Simpson';
+    // theSimpsons[char]['marge']['age'] = 36;
+
+
+    // theSimpsons.character.bart= {};
+    // theSimpsons.character.bart.name = 'Bart Simpson';
+    // theSimpsons[char]['bart']['age'] = 10;
+
+
+    // theSimpsons.character.lisa = {};
+    // theSimpsons.character.lisa.name = 'Lisa Simpson';
+    // theSimpsons[char]['lisa']['age'] = 8;
+
+
+    // theSimpsons.character.maggie = {};
+    // theSimpsons.character.maggie.name = 'Maggie Simpson';
+    // theSimpsons[char]['maggie']['age'] = 1;
+
+
+
+
+</script>
+
+</body>
+</html>
