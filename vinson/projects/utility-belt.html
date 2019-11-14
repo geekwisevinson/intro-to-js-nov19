@@ -18,10 +18,16 @@
         .subject {
             margin: .1em 1em;
             padding: .5em;
-            background-color: yellow;
         }
         h2, pre {
             background-color: wheat;
+        }
+
+        .js {
+            background-color: yellow;
+        }
+        .html {
+            background-color: cornflowerblue;
         }
     </style>
 </head>
@@ -39,29 +45,28 @@
 
         const titleElement = document.querySelector('.myTitle');
         const displayElement = document.querySelector('pre');
-
-
         const topicElement = document.querySelector('.topic');
 
-        function addSubject(subject) {
+        function addSubject(subject, type) {
             const newElement = document.createElement('span');
             topicElement.appendChild(newElement);
             newElement.innerText = subject;
-            newElement.classList.add('subject');
+            newElement.classList.add('subject', type);
             newElement.addEventListener('click', function () {
                 console.log(this.innerText);
                 displaySubject(this.innerText);
             });
         }
 
-        addSubject('create variable' );
-        addSubject('get an element');
-        addSubject('change element text');
-        addSubject('add class to element');
-        addSubject('loops');
+        addSubject('create variable', 'js' );
+        addSubject('get an element', 'html');
+        addSubject('change element text', 'html');
+        addSubject('add class to element', 'html');
+        addSubject('loops', 'js');
+        addSubject('add an event listener', 'html');
+        addSubject('create an element', 'html');
 
         function displaySubject(subject) {
-            console.log('now');
             changeDisplay(
                 subjects[subject].titleText,
                 subjects[subject].displayText
