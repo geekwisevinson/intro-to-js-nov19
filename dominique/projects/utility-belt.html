@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Utility Belt</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="topic">
+
+    </div>
+
+    <h2 class="myTitle">Title</h2>
+    <pre>Display Text Goes Here</pre>
+
+    <script src="./js/data-subjects.js"></script>
+    <script>
+        
+        const titleElement = document.querySelector('.myTitle');
+        const displayElement = document.querySelector('pre');
+        
+        const topicElement = document.querySelector('.topic');
+        
+        function addSubject(subject) {
+            const newElement = document.createElement('span');
+            topicElement.appendChild(newElement);
+            newElement.innerText = subject;
+            newElement.classList.add('subject');
+
+            newElement.addEventListener('click', function () {
+                console.log(this.innerText);
+                displaySubject(this.innerText);
+            });
+        }
+
+        addSubject('Create a Variable');
+        addSubject('Get an Element');
+        addSubject('Change Element Text');
+        addSubject('Add/Remove Class to Element');
+        addSubject('Loops');
+
+        
+
+        function displaySubject(subject) {
+            changeDisplay(
+            subjects[subject].titleText,
+            subjects[subject].displayText
+            )
+        }
+
+        function changeDisplay (titleText, displayText) {
+            titleElement.innerHTML = titleText;
+            displayElement.innerHTML = displayText;
+        }
+
+    </script>
+
+</body>
+</html>
