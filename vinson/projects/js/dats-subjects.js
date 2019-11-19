@@ -30,7 +30,19 @@ const subjects = {
         displayText: `
                     var myElement = document.querySelector('h2');
                     myElement.classList.add('anyClass');
-                     myElement.classList.remove('anyClass');
+                    myElement.classList.remove('anyClass');
+                `,
+    },
+    'add an event listener': {
+        titleText: `Add an Event Listener`,
+        displayText: `
+                    var myElement = document.querySelector('h2');
+                    myElement.addEventListener('click', function () {
+                        console.log("you clicked me");
+                    });
+                     myElement.addEventListener('mouseenter', function () {
+                        console.log("you hovered over me");
+                    });
                 `,
     },
     'loops': {
@@ -50,5 +62,19 @@ const subjects = {
                 `,
     }
 };
+
+function addData(name, displayText ) {
+    subjects[name] = {};
+    subjects[name].titleText = name.toUpperCase();
+    subjects[name].displayText = displayText;
+}
+
+addData('create an element',
+    `
+    const myElement = document.createElement('div');
+    const myElement = document.createElement('span');
+    const myElement = document.createElement('h2');
+     
+`);
 
 console.log('end of external script');
