@@ -9,10 +9,11 @@
             width: 75px;
             background-color: grey;
             padding: 10px;
+            border: 1px solid black;
+            position: absolute;
         }
 
-        .suit {
-            padding: 30px;
+        .suit , .value{
             font-size: xx-large;
         }
 
@@ -23,23 +24,130 @@
         .black {
             color: black;
         }
+
+        #dealers, #player1, #player2 {
+            position: relative;
+            height: 100px;
+            width: 75px;
+        }
+
+        #dealers {
+            background-color: black;
+        }
+
+        #player1 {
+            background-color: red;
+        }
+        #player2 {
+            background-color: blue;
+        }
+
+
     </style>
 </head>
 <body>
-<div class="card red">
-    <span class="value">A</span>
-    <span class="suit">&hearts;</span>
-</div>
+
+    <div id="dealers"></div>
+
+    <div id="player1"></div>
+    <div id="player2"></div>
 
 <script>
-    
-    const suits = ['&hearts;', '&spades;', '&diamonds;', '&clubs;'];
-    
-    function createCard() {
-        
-    }
-    
 
+    const decks = {
+        dealer: [],
+        player1: [],
+        player2: [],
+    };
+
+    const dealersElement = document.querySelector('#dealers');
+    const player1Element = document.querySelector('#player1');
+    const player2Element = document.querySelector('#player2');
+    
+    const suits = ['&hearts;', '&spades;', '&diams;', '&clubs;'];
+    const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+
+
+    suits.forEach(function (suit) {
+        values.forEach(function (value) {
+            createCard(suit, value);
+        });
+    });
+
+
+
+
+
+
+    function createCard( p_suit, p_value ) {
+        const cardElement = document.createElement('div');
+        cardElement.addEventListener('click', function () {
+            console.log('player1', player1Element);
+            player1Element.appendChild(this);
+        });
+        cardElement.classList.add('card');
+
+        if ( p_suit === suits[0] || p_suit === suits[2] ) {
+            cardElement.classList.add('red');
+        } else {
+            cardElement.classList.add('black');
+        }
+
+
+
+        const valueSpan = document.createElement('span');
+        valueSpan.classList.add('value');
+        cardElement.appendChild(valueSpan);
+        valueSpan.innerHTML = p_value;
+
+        const suitSpan = document.createElement('span');
+        suitSpan.classList.add('suit');
+        cardElement.appendChild(suitSpan);
+        suitSpan.innerHTML = p_suit;
+
+
+        decks.dealer.push({
+            suit: p_suit,
+            value: p_value,
+            cardElement,
+        });
+        console.log(decks);
+    }
+
+
+
+    function updateCards() {
+        decks.dealer.forEach( function (card) {
+            dealersElement.appendChild(card.cardElement);
+        });
+        decks.player1.forEach( function (card) {
+            player1Element.appendChild(card.cardElement);
+        });
+        decks.player2.forEach( function (card) {
+            player2Element.appendChild(card.cardElement);
+        });
+    }
+
+    updateCards();
+
+    decks.dealer.sort(
+        function (a, b) {
+            return (Math.random() > .5) ? 1 : -1;
+        }
+    );
+    updateCards();
+
+    decks.dealer.forEach( function (card, index) {
+        const testDeck = decks.dealer;
+        testDeck.splice(testDeck.indexOf(card), 1);
+        if (index % 2 === 0) {
+            decks.player2.push(card)
+        } else {
+            decks.player1.push(card);
+        }
+    });
+    updateCards();
+    console.log('decks', decks);
 
 </script>
 </body>
