@@ -138,7 +138,8 @@
     updateCards();
 
     decks.dealer.forEach( function (card, index) {
-        decks.dealer.splice(index, 1);
+        const testDeck = decks.dealer;
+        testDeck.splice(testDeck.indexOf(card), 1);
         if (index % 2 === 0) {
             decks.player2.push(card)
         } else {
