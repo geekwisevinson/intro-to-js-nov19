@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .card{
+            height: 100px;
+            width: 75px;
+            background-color: grey;
+            padding: 10px;
+        }
+
+        .suit{
+            padding: 30px;
+            font-size: xx-large;
+        }
+
+        .red {
+            color: red;
+
+        }
+
+        .black{
+            color: black;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="card red" >
+        <span class="value">A</span>
+        <span class="suit">&hearts;</span>
+
+
+    </div>
+
+    <script>
+        
+        const suits = ['&hearts;', '&spades;', '&diamonds;', '&clubs;'];
+
+
+        function createCard() {
+            const cardElement = document.createElement('div');
+            cardElement.classList.add('card');
+            cardElement.classList.add('red');
+            document.body.apprentChild(cardElement);
+
+
+            const valueSpan = document.createElement('span');
+            valueSpan.classList.add('value');
+
+            const suitSpan = document.createElement('span');
+
+
+
+
+        }
+    
+    
+    </script>
+    
+</body>
+</html>
