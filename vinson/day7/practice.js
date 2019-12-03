@@ -19,12 +19,16 @@ function createAnElement(type, parent) {
     }
     return element;
 }
-
+// create element div and add some innerHTML
 const myDiv = createAnElement('div', document.body);
 myDiv.innerHTML = '<p>This is the Right one</p>';
+
+// created string variables that are image path
 const imageSrc = 'https://image.shutterstock.com/image-photo/food-table-healthy-delicious-organic-600w-285854987.jpg';
 const imageSrc2 = 'https://image.shutterstock.com/image-photo/friendship-freedom-beach-summer-holiday-600w-285854864.jpg';
 const imageSrc3 = 'https://image.shutterstock.com/image-photo/diverse-beach-summer-party-roof-600w-285854462.jpg';
+
+// add an event listener for button
 button.addEventListener('click', onAnythingClick);
 function onAnythingClick() {
     console.log('click', this);
@@ -32,6 +36,7 @@ function onAnythingClick() {
     img.src = imageSrc;
     h1.classList.add('another');
 }
+// add an event listener for button2
 button2.addEventListener('click', cycleImages);
 function onButton2Click() {
     console.log('click', this);
@@ -39,10 +44,12 @@ function onButton2Click() {
     img.src = imageSrc2;
     h1.classList.add('another');
 }
+// create an array to hold the paths for images;
 const images = [];
 images.push(imageSrc);
 images.push(imageSrc2);
 images.push(imageSrc3);
+// create a variable for the current index;
 let currentIndex = 0;
 function cycleImages() {
     const img = document.querySelector('img');
