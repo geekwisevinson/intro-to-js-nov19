@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functions</title>
+</head>
+<body>
+
+<script>
+    function write(value) {
+        document.write(value + '<br>');
+    }
+    function sayMyName() {
+        write('my name')
+    }
+    sayMyName();
+    function sayYourName(yourName) {
+        write(yourName)
+    }
+    sayYourName('Moe');
+
+    function orderPizza(crust, cheese, pep, pine, shrooms, sauce, delivery ) {
+        makeCrust(crust);
+        addCheese(cheese);
+        addPep(pep);
+        addPineapple(pine);
+        addMushrooms(shrooms);
+        addSauce(sauce);
+        deliverToHouse(delivery);
+        takeABreakChef();
+        return 'final';
+    }
+
+    const pizza = orderPizza('', 'moz', 'chicken', 'pine apple', 'canned mushrooms', 'red', 'yes');
+
+    function makeCrust(c) {
+
+        write('made ' + c);
+
+    }
+
+    function addCheese(che) {
+
+        checkCheese();
+        write('add ' + che);
+    }
+
+    function checkCheese() {
+        return true;
+    }
+
+    function addPep(pep) {
+        write('add ' + pep);
+    }
+    function addPineapple(pine)  {
+        write('add ' + pine);
+    }
+
+    function addMushrooms(shrooms) {
+        write('add ' + shrooms);
+    }
+
+    function addSauce(sauce) {
+        write('add ' + sauce);
+    }
+
+    function deliverToHouse(d) {
+        write('add ' + d);
+    }
+
+    function takeABreakChef() {
+        write('the chef takes a break');
+    }
+
+    console.log('pizza');
+    console.log(pizza);
+
+</script>
+</body>
+</html>

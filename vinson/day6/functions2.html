@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functions 2</title>
+</head>
+<body>
+
+
+<script>
+
+    // Scope
+    function write(value) {
+        document.write(value + '<br>')
+    }
+    function sayName2() {
+        const joe = 'Joe';
+        write(joe);
+    }
+    function sayName() {
+        write(name);
+    }
+
+    // Closures
+    function counter() {
+        let count = 0;
+        function add() {
+            count++;
+            console.log('count', count);
+        }
+
+        function sub() {
+            count--;
+            console.log('count', count);
+        }
+
+        function getCount() {
+            return count;
+        }
+
+        return {
+            add,
+            sub,
+            getCount,
+        }
+    }
+
+
+    sayName();
+    sayName2();
+
+    function times(value) {
+        return function (anotherValue) {
+            return value * anotherValue;
+        }
+    }
+
+    var times6 = times(6);
+    var times7 = times(7);
+
+    const answer = times7(3);
+
+    console.log(answer);
+</script>
+
+</body>
+</html>
