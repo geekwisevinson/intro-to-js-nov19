@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loops</title>
+</head>
+<body>
+
+    <h1>Loops</h1>
+
+<script>
+
+
+     for (let i = 0; i < 10; i++) {
+         console.log(i);
+     }
+
+     console.log('exit');
+     let i = 0;
+     while (i < 10) {
+         console.log(i);
+         i++;
+     }
+     console.log('exit');
+     console.log(i);
+
+     const apple = {
+         color: 'red',
+         flavor: 'tart',
+         consistency: 'crisp',
+         freshness: 'very',
+     };
+
+     for (const prop in apple) {
+        console.log(prop);
+        console.log(apple[prop])
+     }
+
+     const list = ['milk', 'cheese', 'apples', 'butter'];
+
+     for (const product of list) {
+         console.log(product, list);
+     }
+
+     console.log('---------');
+     list.forEach(function (item) {
+         console.log(item);
+     });
+
+     const wanted = list.filter( function (item, index) {
+        return item.includes('l')
+     });
+
+     const map = list.map( function (item, index) {
+         return ({item: item, index: index})
+     });
+
+     console.log(map);
+
+
+     const users = [{name: 'joe', social: '555-55-5555'}, {name: 'moe', social: '555-55-5555'}, {name: 'bro', social: '555-55-5555'}]
+
+     const justNames = users.map(function (item, index) {
+        return ({username: item.name})
+     })
+     console.log(justNames);
+    // for (let i = 0; i < 100; i++) {
+    //
+    //     if (i % 3 === 0 && i % 5 === 0) {
+    //         console.log('fizz buzz')
+    //     }
+    //     else if (i % 3 === 0) {
+    //         console.log('fizz')
+    //     } else if( i % 5 === 0){
+    //         console.log('buzz');
+    //     } else {
+    //         console.log(i);
+    //     }
+    // }
+
+</script>
+</body>
+</html>

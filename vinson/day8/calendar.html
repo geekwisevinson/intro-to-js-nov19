@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calendar</title>
+
+    <style>
+        td {
+            background-color: grey;
+            border: 1px solid black;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+
+</head>
+<body>
+
+<script>
+    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    const daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const date = new Date();
+    addTitle();
+    addParagraph();
+    addATable();
+    function addTitle() {
+        const titleTag = document.createElement('h1');
+        document.body.appendChild(titleTag);
+        titleTag.innerText = 'Calendar';
+    }
+
+    function addParagraph() {
+        const paragraphElement = document.createElement('p');
+        document.body.appendChild(paragraphElement);
+        paragraphElement.innerText = 'This is a calendar made with js';
+    }
+
+    function addATable() {
+        const tableElement = document.createElement('table');
+        document.body.appendChild(tableElement);
+    }
+
+    function displayMonth() {
+        const h1 = document.querySelector('h1');
+        h1.innerText = months[date.getMonth()];
+    }
+    displayMonth();
+
+    function addATableRowForHeaders() {
+
+    }
+
+    function addATableRow() {
+        const tableElement = document.querySelector('table');
+        const tr = document.createElement('tr');
+        tableElement.appendChild(tr);
+    }
+    addATableRow();
+    
+    function addTableHeaders(dayName) {
+        const tr = document.querySelector('tr');
+        const th = document.createElement('th');
+        tr.appendChild(th);
+        th.innerText = dayName;
+    }
+
+    daysOfTheWeek.forEach( function (dayName) {
+        addTableHeaders(dayName)
+    });
+
+    function addATrForAWeek() {
+        addATableRow();
+    }
+    function addTableDay() {
+        const lastTr = document.querySelector('tr:last-child');
+        console.log('lastTr', lastTr);
+        const td = document.createElement('td');
+        lastTr.appendChild(td);
+    }
+
+    for (let i = 0; i < 35; i++) {
+        if (i % 7 === 0) {
+            addATrForAWeek();
+        }
+        addTableDay();
+    }
+
+</script>
+
+</body>
+</html>
