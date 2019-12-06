@@ -11,6 +11,16 @@
             width: 100px;
             height: 100px;
         }
+
+        .official {
+            background-color: aqua;
+        }
+
+        .today {
+            background-color: blue;
+            color: whitesmoke;
+            font-size: xx-large;
+        }
     </style>
 
 </head>
@@ -20,6 +30,10 @@
     const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     const daysOfTheWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const date = new Date();
+    const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+    const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+    console.log('first', firstDay);
+    console.log('last', lastDay);
     addTitle();
     addParagraph();
     addATable();
@@ -46,10 +60,6 @@
     }
     displayMonth();
 
-    function addATableRowForHeaders() {
-
-    }
-
     function addATableRow() {
         const tableElement = document.querySelector('table');
         const tr = document.createElement('tr');
@@ -73,7 +83,6 @@
     }
     function addTableDay() {
         const lastTr = document.querySelector('tr:last-child');
-        console.log('lastTr', lastTr);
         const td = document.createElement('td');
         lastTr.appendChild(td);
     }
@@ -84,6 +93,22 @@
         }
         addTableDay();
     }
+
+    const firstIndex = firstDay.getDay();
+    const lastIndex = lastDay.getDate();
+    console.log(firstIndex);
+    const dayElements = document.querySelectorAll('td');
+    console.log(lastIndex, 'lastIndex');
+    for (let i = 0; i < 35; i++) {
+        if (i >= firstIndex && i < lastIndex) {
+            dayElements[i].classList.add('official')
+        }
+    }
+    const allDays = document.querySelectorAll('.official');
+    allDays.forEach( function (day, index) {
+        day.innerHTML = String(index + 1);
+    });
+    allDays[date.getDate() - 1].classList.add('today');
 
 </script>
 
