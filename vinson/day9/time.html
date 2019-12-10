@@ -69,14 +69,8 @@
     scenes.forEach( scene => {
         callScene(scene);
     });
-
-
-    let i = 0;
-
-
     function callScene(scene) {
         setTimeout(function () {
-            console.log('scene', scene);
             screen.innerHTML = scene.say;
             screen.classList.remove('fade-in', 'fade-out');
             screen.classList.add(scene.class);
