@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calender</title>
+</head>
+<body>
+    
+
+
+    <script>
+        const months = ['jan', 'feb', 'march'];
+        
+        const date = new Date ();
+        console.dir(date.getMonth());
+        addParagraph();
+        addTitle();
+        addATable();
+       function addTitle() {
+        const titleTag = document.createElement('h1')
+        document.body.appendChild(titleTag);
+        titleTag.innerText = 'Calender';
+
+
+       }
+
+       function addParagraph(){
+           const paragraphElement = document.createElement('p');
+           document.body.appendChild(paragraphElement);
+           paragraphElement.innerText = 'This is a calender made with JS';
+
+
+
+
+       }
+    
+    
+    
+    </script>
+
+
+
+
+</body>
+</html>
