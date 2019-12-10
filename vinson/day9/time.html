@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            background-color: black;
+        }
+        #screen {
+            width: 100%;
+            height: 100%;
+            transition: all 2s linear;
+        }
+        .fade-in {
+            background-color: black;
+            color: whitesmoke;
+            text-align: center;
+            font-size: 200px;
+        }
+        .fade-out {
+            background-color: black;
+            color: black;
+            text-align: center;
+            font-size: 200px;
+        }
+        .sun {
+            background-color: yellow;
+            color: brown;
+            text-align: center;
+            font-size: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="screen"></div>
+<script>
+    const scenes =[
+        {
+            say: 'Hello',
+            time: 3,
+            class: 'fade-in'
+        },
+        {
+            say: 'Hello',
+            time: 5,
+            class: 'fade-out'
+        },
+        {
+            say: 'World',
+            time: 7,
+            class: 'fade-in'
+        },
+        {
+            say: 'World',
+            time: 9,
+            class: 'fade-out'
+        },
+        {
+            say: 'In a world where it once was dark...',
+            time: 12,
+            class: 'sun'
+        }
+    ];
+    const screen =   document.querySelector('#screen');
+
+    scenes.forEach( scene => {
+        callScene(scene);
+    });
+
+
+    let i = 0;
+
+
+    function callScene(scene) {
+        setTimeout(function () {
+            console.log('scene', scene);
+            screen.innerHTML = scene.say;
+            screen.classList.remove('fade-in', 'fade-out');
+            screen.classList.add(scene.class);
+        }, scene.time * 1000 );
+    }
+</script>
+
+</body>
+</html>
