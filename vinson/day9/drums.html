@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .selected {
+            background-color: lime;
+        }
+    </style>
+</head>
+<body>
+
+<button onclick="playKick()">Kick</button>
+<button onclick="playSnare()">Snare</button>
+
+
+<script>
+    const kickSound = document.createElement('audio');
+    kickSound.src = './kick.mp3';
+    const snareSound = document.createElement('audio');
+    snareSound.src = './snare.mp3';
+    const buttons = document.querySelectorAll('button');
+
+    function playKick() {
+        kickSound.currentTime = 0;
+        console.log('buttons', buttons);
+        buttons[0].classList.add('selected');
+        kickSound.play();
+    }
+
+    function playSnare() {
+        snareSound.currentTime = 0;
+        buttons[1].classList.add('selected');
+        snareSound.play();
+    }
+
+    document.addEventListener('keypress', function (e) {
+        console.log(e);
+        if (e.key === 'j' ) {
+            playKick()
+        }
+        if (e.key === 'k' ) {
+            playSnare()
+        }
+    });
+    document.addEventListener('keyup', function (e) {
+        console.log(e);
+        if (e.key === 'j' ) {
+            buttons[0].classList.remove('selected');
+        }
+        if (e.key === 'k' ) {
+            buttons[1].classList.remove('selected');
+        }
+    })
+
+</script>
+</body>
+</html>

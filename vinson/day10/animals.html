@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animals</title>
+
+    <style>
+        .animal {
+            background-color: gold;
+            display: inline-block;
+            margin: 10px;
+            font-size: 30px;
+            width: 200px;
+        }
+
+        .mouse {
+            background: brown;
+            color: whitesmoke;
+        }
+        .rabbit {
+            background: red;
+            color: whitesmoke;
+        }
+        .lion {
+            background: yellow;
+        }
+        .wolf {
+            background: blue;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+    class Animal {
+        type = 'animal';
+        diet = 'unknown';
+        nutrition = 100;
+        action = 'chilling';
+        gen  = 0;
+
+        body = null;
+        display = ['type', 'diet', 'nutrition', 'action', 'gen'];
+
+
+        constructor(type, diet, gen) {
+
+            this.type = type;
+            this.diet = diet;
+            this.gen = gen;
+
+            this.body = document.createElement('div');
+            document.body.appendChild(this.body);
+            this.body.classList.add('animal');
+            this.display.forEach( attr => {
+                const el = document.createElement('div');
+                this.body.appendChild(el);
+                el.innerHTML = this[attr];
+                el.classList.add(attr);
+            });
+
+
+
+            const myInterval = setInterval( () => {
+                if (this.nutrition < 80) {
+                    clearInterval(myInterval);
+                }
+                this.nutrition--;
+                this.displayProps();
+
+
+                if (this.nutrition < 95) {
+                    const canFindFood = Math.random() < .2;
+                    this.action = 'hungry';
+                    if (canFindFood) {
+                        this.findFood();
+                    }
+                }
+
+                if (this.nutrition < 80) {
+                    this.body.remove();
+                }
+            }, 1000);
+            this.body.classList.add(type);
+        }
+        findFood() {
+            console.log(this.type, 'looks for food');
+            this.action = 'looking for food';
+        }
+        displayProps() {
+            this.display.forEach( attr => {
+               const el = this.body.querySelector('.' + attr);
+               el.innerHTML = this[attr];
+            });
+        }
+        eat() {
+            this.nutrition += 10;
+            this.chanceForReproduction();
+        }
+
+        chanceForReproduction() {
+            const canRepro = Math.random() < .3;
+            if (canRepro) {
+                this.makeBaby();
+            }
+        }
+
+        makeBaby() {
+
+        }
+
+        chanceForFood() {
+            const foundFood = Math.random() < .4;
+            if (foundFood) {
+                this.eat();
+            }
+        }
+    }
+
+    class Omnivore extends Animal{
+        constructor(type, gen) {
+            super(type, 'omnivore', gen);
+
+        }
+        findFood() {
+            console.log(this.type, 'looks for food');
+            this.searchFood();
+        }
+        searchFood() {
+            this.action = 'looking for food';
+            this.chanceForFood();
+        }
+
+        makeBaby() {
+            new Omnivore(this.type, this.gen + 1);
+        }
+    }
+
+    class Carnivore extends Animal {
+        constructor(type, gen) {
+            super(type, 'carnivore', gen);
+        }
+        findFood() {
+            console.log(this.type, 'looks for food');
+            this.huntFood();
+        }
+        huntFood() {
+            this.action = 'hunting for food';
+            this.chanceForFood();
+        }
+        makeBaby() {
+            this.action = 'make baby ' + this.type;
+            new Carnivore(this.type,  this.gen + 1);
+        }
+    }
+
+
+
+
+    for(let i = 0; i < 4; i++ ) {
+        new Omnivore('mouse', 1);
+        new Carnivore('wolf', 1);
+        new Omnivore('rabbit', 1);
+        new Carnivore('lion', 1);
+    }
+</script>
+</body>
+</html>
