@@ -3,22 +3,132 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        .sequenceKick > *, .sequenceSnare > * {
+            width: 100px;
+        }
+        .selected {
+            background-color: lime;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+        .playingNow {
+            background-color: blue;
+            border-radius: 10px;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
+
+<button>&#9654;</button>
+<div>
+    BEAT: <span></span>
+</div>
 
 <audio data-sound="kick" src="../day9/kick.mp3"></audio>
 <audio data-sound="snare" src="../day9/snare.mp3"></audio>
 
+<div class="sequenceKick">
+
+</div>
+<div class="sequenceSnare">
+
+</div>
 <script>
+
+    const playButton = document.querySelector('button');
+    playButton.addEventListener('click', playPause);
+    let beat = 1;
+    const minute = 1000 * 60;
+    const bpmAnswer = Number(prompt('bpm?', '90'));
+    const bpm = minute / bpmAnswer;
+    const notes = Number(prompt('notes?', '8'));
+    let myInterval = null;
+    function playPause() {
+        if (!myInterval) {
+           myInterval =  setInterval(function () {
+                if (beat > notes) {
+                    beat = 1;
+                }
+                beatSpan.innerHTML = beat;
+
+                kickButtons.forEach( button => {
+                    button.classList.remove('playingNow');
+                });
+                kickButtons[beat - 1].classList.add('playingNow');
+                if (kickButtons[beat - 1].classList.contains('selected')) {
+                    sounds[0].currentTime = 0;
+                    sounds[0].play();
+                }
+                snareButtons.forEach( button => {
+                    button.classList.remove('playingNow');
+                });
+                if (snareButtons[beat - 1].classList.contains('selected')) {
+                    sounds[1].currentTime = 0;
+                    sounds[1].play();
+                }
+                snareButtons[beat - 1].classList.add('playingNow');
+                beat++;
+            }, bpm);
+        } else  {
+            clearInterval(myInterval);
+            myInterval = null;
+        }
+    }
+
+
+
+    const beatSpan = document.querySelector('div span');
+    beatSpan.innerHTML = beat;
     const sounds = document.querySelectorAll('audio');
     sounds.forEach( function ( item , index, arr) {
       console.log(item, index, arr);
         const button = document.createElement('button');
         document.body.appendChild(button);
         button.innerText = item.dataset.sound;
+        button.addEventListener('click', function () {
+            item.currentTime = 0;
+            item.play();
+        })
     } );
 
 
+
+
+    const steps = notes;
+
+
+    const sequencerKick = document.querySelectorAll('.sequenceKick')[0];
+    const sequencerSnare = document.querySelectorAll('.sequenceSnare')[0];
+    for (let i = 0; i < steps; i++) {
+        const button = document.createElement('button');
+        sequencerKick.appendChild(button);
+        button.innerText = 'kicks ' + (i + 1);
+        button.addEventListener('click', function () {
+            if (button.classList.contains('selected')) {
+                button.classList.remove('selected');
+            } else {
+                button.classList.add('selected');
+            }
+
+        })
+    }
+    for (let i = 0; i < steps; i++) {
+        const button = document.createElement('button');
+        sequencerSnare.appendChild(button);
+        button.innerText = 'snare ' + (i + 1);
+        button.addEventListener('click', function () {
+            if (button.classList.contains('selected')) {
+                button.classList.remove('selected');
+            } else {
+                button.classList.add('selected');
+            }
+        })
+    }
+
+    const kickButtons = sequencerKick.querySelectorAll('button');
+    const snareButtons = sequencerSnare.querySelectorAll('button');
 </script>
 </body>
 </html>
