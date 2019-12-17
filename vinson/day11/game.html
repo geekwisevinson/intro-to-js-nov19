@@ -50,7 +50,7 @@
                     turn = 0;
                 }
                 turnEl.innerHTML = players[turn];
-                console.log(board);
+                checkForWinner();
             })
 
         })
@@ -58,10 +58,56 @@
 
     function checkForWinner() {
         let winner = false;
-        board[0][0] ===
+        const one = board[0][0];
+        const two = board[0][1];
+        const three = board[0][2];
+        const four = board[1][0];
+        const five = board[1][1];
+        const six = board[1][2];
+        const seven = board[2][0];
+        const eight = board[2][1];
+        const nine = board[2][2];
+        avatar.forEach( l => {
+                    if (
+                        (l === one &&
+                        one === two &&
+                        one === three)
+                        ||
+                        (l === four &&
+                            four === five &&
+                            four === six)
+                        ||
+                        (l === seven &&
+                            seven === eight &&
+                            seven === nine)
+                        ||
+                        (l === one &&
+                            one === four &&
+                            one === seven)
+                        ||
+                        (l === two &&
+                            two === five &&
+                            two === eight)
+                        ||
+                        (l === three &&
+                            three === six &&
+                            three === nine)
+                        ||
+                        (l === one &&
+                            one === five &&
+                            one === nine)
+                        ||
+                        (l === three &&
+                            three === five &&
+                            three === seven)
+                    ) {
+                        alert(l + ' wins!')
+                    }
+        });
+        console.log(one, two, three, four, five, six, seven, eight, nine)
         return winner;
     }
-    console.log(board[0][1])
+
 </script>
 </body>
 </html>
