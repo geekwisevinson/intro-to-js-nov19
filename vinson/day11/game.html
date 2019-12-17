@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .board {
+            width: 601px;
+        }
+        .board > div {
+            box-sizing: border-box;
+            background-color: yellow;
+            border: 3px solid black;
+            width: 200px;
+            height: 200px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+<div class="turn"></div>
+
+<div class="board">
+
+</div>
+<script>
+    const board = [
+        ['-', '-', '-'],
+        ['-', '-', '-'],
+        ['-', '-', '-']
+    ];
+    const boardEl = document.querySelector('.board');
+    const turnEl = document.querySelector('.turn');
+    let turn = 0;
+    const players = [];
+    const avatar = ['X', 'O'];
+    players.push(prompt('player1', ''));
+    players.push(prompt('player2', ''));
+    turnEl.innerHTML = players[0];
+    board.forEach((row, i1) => {
+        row.forEach((square, i2) => {
+            const div = document.createElement('div');
+            boardEl.appendChild(div);
+            div.innerHTML = square;
+            div.addEventListener('click', function () {
+                this.innerHTML = avatar[turn];
+                board[i1][i2] = avatar[turn];
+                turn++;
+                if(turn === players.length ) {
+                    turn = 0;
+                }
+                turnEl.innerHTML = players[turn];
+                console.log(board);
+            })
+
+        })
+    });
+
+    function checkForWinner() {
+        let winner = false;
+        board[0][0] ===
+        return winner;
+    }
+    console.log(board[0][1])
+</script>
+</body>
+</html>

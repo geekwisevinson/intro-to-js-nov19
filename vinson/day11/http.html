@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+    Weather in <span></span>
+    <div></div>
+</div>
+
+<script>
+    const div = document.querySelector('div div');
+    const span = document.querySelector('span');
+    const http = new XMLHttpRequest();
+    const url = 'https://jsonplaceholder.typicode.com/todos/1';
+    http.open('GET', url);
+    // http.send();
+
+    http.onreadystatechange = function (e) {
+        if (e.currentTarget.readyState === 4) {
+            console.log('e' , e.currentTarget.responseText);
+        }
+
+    };
+
+
+    fetch(url)
+        .then( response => { return response.json() })
+        .then( res => console.log(res));
+    fetch('https://jsonplaceholder.typicode.com/todos')
+        .then(response => response.json())
+        .then(json => createUser(json))
+
+    function createUser(arr) {
+        arr.forEach( item => {
+            const button = document.createElement('button')
+            document.body.appendChild(button);
+            button.innerHTML = item.title;
+        })
+    }
+
+    const weather = {
+            key : "03726b04c772c54015bff90e597deaf9",
+
+
+        getWeather : function getWeather({latitude,longitude}) {
+            const endPoint = `https://api.openweathermap.org/data/2.5/weather?`;
+            const apiUrl = `${endPoint}lat=${latitude}&lon=${longitude}&APPID=${this.key}&units=metric`
+            fetch(apiUrl).then(response => response.json())
+                .then(json => {
+                    console.log(json);
+                    div.innerHTML = `
+                    the weather in ${json.name} is ${json.weather[0].description}
+                    `;
+                    span.innerHTML = json.name
+                });
+        }
+    };
+
+    weather.getWeather({latitude: 36.7378, longitude: -120.7871});
+</script>
+
+</body>
+</html>
